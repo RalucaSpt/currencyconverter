@@ -70,7 +70,7 @@ function fetchExchangeRates() {
     fetch('https://api.freecurrencyapi.com/v1/latest?apikey=fca_live_A8B5fHavBAZG6opxPJ85vozPY4fQj8nPQvZfdU9s')
         .then(response => response.json())
         .then(data => {
-            exchangeRates = data.data; // Store the exchange rates from the API response
+            exchangeRates = data.data; 
             console.log('Exchange Rates:', exchangeRates);
 
             localStorage.setItem('exchangeRates', JSON.stringify(exchangeRates));
@@ -109,10 +109,10 @@ function convertCurrency() {
         const convertedAmount = (inputAmount / inputRate * outputRate).toFixed(2);
         outputAmountElement.value = convertedAmount;
     } else {
-        outputAmountElement.value = 'N/A'; // Handle cases where the exchange rate is not available
+        outputAmountElement.value = 'N/A'; 
     }
 
-    resultHeader.innerText = `${inputAmount} ${inputCurrency} = ${outputAmountElement.value} ${outputCurrency}`;
+    resultHeader.innerText = `1 ${inputCurrency} = ${(outputRate / inputRate).toFixed(2)} ${outputCurrency}`;
 }
 
 
@@ -133,9 +133,9 @@ function swapOptions() {
     convertCurrency();
 }
 
-inputAmountElement.addEventListener('input', convertCurrency); // Trigger conversion on input amount change
-inputCurrencyElement.addEventListener('change', convertCurrency); // Trigger conversion when input currency changes
-outputCurrencyElement.addEventListener('change', convertCurrency); // Trigger conversion when output currency changes
+inputAmountElement.addEventListener('input', convertCurrency); 
+inputCurrencyElement.addEventListener('change', convertCurrency); 
+outputCurrencyElement.addEventListener('change', convertCurrency); 
 swapBtn.addEventListener('click', swapOptions);
 
 function initApp() {

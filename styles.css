@@ -72,3 +72,9 @@ footer{
     background-color: #181818;
     font-size: x-small;
 }
+
+#warning {
+    color: rgb(255, 98, 98);
+    font-size: 0.8em;
+    margin-top: 10px;
+}
