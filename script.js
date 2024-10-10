@@ -34,3 +34,25 @@ const currencies = {
     "ZAR": "South African Rand"
 };
 
+// Get references to the input fields, select elements, and button
+const inputCurrencyElement = document.querySelector(".input-currency");
+const outputCurrencyElement = document.querySelector(".output-currency");
+const dateElement = document.getElementById("dateElement");
+const inputAmountElement = document.getElementById("input-amount");
+const outputAmountElement = document.getElementById("output-amount");
+
+// Variables to store fetched exchange rates
+let exchangeRates = {};
+
+
+function populateCurrencyDropdowns() {
+    for (const currencyCode in currencies) {
+        const inputOptionElement = document.createElement("option");
+        inputOptionElement.value = currencyCode;
+        inputOptionElement.innerText = currencies[currencyCode];
+        inputCurrencyElement.appendChild(inputOptionElement);
+        outputCurrencyElement.appendChild(inputOptionElement.cloneNode(true));
+    }
+}
+
+populateCurrencyDropdowns();
