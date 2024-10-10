@@ -133,4 +133,9 @@ function swapOptions() {
     convertCurrency();
 }
 
+inputAmountElement.addEventListener('input', convertCurrency); // Trigger conversion on input amount change
+inputCurrencyElement.addEventListener('change', convertCurrency); // Trigger conversion when input currency changes
+outputCurrencyElement.addEventListener('change', convertCurrency); // Trigger conversion when output currency changes
+swapBtn.addEventListener('click', swapOptions);
+
 
