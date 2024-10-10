@@ -43,7 +43,6 @@ const warningElement = document.getElementById("warning");
 const swapBtn = document.getElementById('swap-btn');
 const resultHeader = document.getElementById('result-header');
 
-// Variables to store fetched exchange rates
 let exchangeRates = {};
 
 
@@ -55,6 +54,8 @@ function populateCurrencyDropdowns() {
         inputCurrencyElement.appendChild(inputOptionElement);
         outputCurrencyElement.appendChild(inputOptionElement.cloneNode(true));
     }
+
+    inputCurrencyElement.value = "RON";
+    outputCurrencyElement.value = "EUR";
 }
 
-populateCurrencyDropdowns();
