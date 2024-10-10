@@ -138,4 +138,11 @@ inputCurrencyElement.addEventListener('change', convertCurrency); // Trigger con
 outputCurrencyElement.addEventListener('change', convertCurrency); // Trigger conversion when output currency changes
 swapBtn.addEventListener('click', swapOptions);
 
+function initApp() {
+    populateCurrencyDropdowns();
+    fetchExchangeRates();
+    updateDate();
+}
+
+initApp();
 
