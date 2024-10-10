@@ -97,3 +97,22 @@ function useCachedRates() {
 }
 
 
+function convertCurrency() {
+    const inputCurrency = inputCurrencyElement.value;
+    const outputCurrency = outputCurrencyElement.value;
+    const inputAmount = parseFloat(inputAmountElement.value);
+
+    const inputRate = exchangeRates[inputCurrency];
+    const outputRate = exchangeRates[outputCurrency];
+
+    if (inputRate && outputRate) {
+        const convertedAmount = (inputAmount / inputRate * outputRate).toFixed(2);
+        outputAmountElement.value = convertedAmount;
+    } else {
+        outputAmountElement.value = 'N/A'; // Handle cases where the exchange rate is not available
+    }
+
+    resultHeader.innerText = `${inputAmount} ${inputCurrency} = ${outputAmountElement.value} ${outputCurrency}`;
+}
+
+
