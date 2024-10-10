@@ -121,7 +121,10 @@ function updateDate() {
     const formattedDate = today.toLocaleDateString("en-US", {
         year: "numeric",
         month: "long",
-        day: "numeric"
+        day: "numeric",
+        hour: '2-digit',
+        minute: '2-digit',
+        hour12: false 
     });
     dateElement.textContent = formattedDate;
 }
