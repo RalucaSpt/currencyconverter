@@ -34,12 +34,14 @@ const currencies = {
     "ZAR": "South African Rand"
 };
 
-// Get references to the input fields, select elements, and button
 const inputCurrencyElement = document.querySelector(".input-currency");
 const outputCurrencyElement = document.querySelector(".output-currency");
 const dateElement = document.getElementById("dateElement");
 const inputAmountElement = document.getElementById("input-amount");
 const outputAmountElement = document.getElementById("output-amount");
+const warningElement = document.getElementById("warning");
+const swapBtn = document.getElementById('swap-btn');
+const resultHeader = document.getElementById('result-header');
 
 // Variables to store fetched exchange rates
 let exchangeRates = {};
