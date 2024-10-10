@@ -59,3 +59,28 @@ function populateCurrencyDropdowns() {
     outputCurrencyElement.value = "EUR";
 }
 
+function fetchExchangeRates() {
+    if(!navigator.onLine) {
+        const warnMessage = `You are currently offline. Exchange rates may not be up to date. Using saved rates from ${new Date(parseInt(localStorage.getItem('exchangeRatesTime'))).toLocaleString()}`;
+        warningElement.innerText = warnMessage;
+        useCachedRates();
+        return;
+    }
+
+    fetch('https://api.freecurrencyapi.com/v1/latest?apikey=fca_live_A8B5fHavBAZG6opxPJ85vozPY4fQj8nPQvZfdU9s')
+        .then(response => response.json())
+        .then(data => {
+            exchangeRates = data.data; // Store the exchange rates from the API response
+            console.log('Exchange Rates:', exchangeRates);
+
+            localStorage.setItem('exchangeRates', JSON.stringify(exchangeRates));
+            localStorage.setItem('exchangeRatesTime', Date.now());
+        })
+        .catch(error => {
+           const warnMessage = `Error fetching exchange rates. Using saved exchange rates from ${new Date(parseInt(localStorage.getItem('exchangeRatesTime'))).toLocaleString()}`;
+            console.error('Error fetching exchange rates:', error);
+            useCachedRates();
+        });
+}
+
+
