@@ -126,4 +126,11 @@ function updateDate() {
     dateElement.textContent = formattedDate;
 }
 
+function swapOptions() {
+    const temp = inputCurrencyElement.value;
+    inputCurrencyElement.value = outputCurrencyElement.value;
+    outputCurrencyElement.value = temp;
+    convertCurrency();
+}
+
 
