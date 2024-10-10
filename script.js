@@ -83,4 +83,17 @@ function fetchExchangeRates() {
         });
 }
 
+function useCachedRates() {
+    const cachedData = localStorage.getItem('exchangeRates');
+    const cachedTime = localStorage.getItem('exchangeRatesTime');
+
+    if (cachedData && cachedTime) {
+        exchangeRates = JSON.parse(cachedData); 
+        console.log('Using cached exchange rates:', exchangeRates);
+    } else {
+        console.warn('No valid cached exchange rates available.');
+        exchangeRates = {}; 
+    }
+}
+
 
