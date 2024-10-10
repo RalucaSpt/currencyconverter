@@ -116,3 +116,14 @@ function convertCurrency() {
 }
 
 
+function updateDate() {
+    const today = new Date();
+    const formattedDate = today.toLocaleDateString("ro-RO", {
+        year: "numeric",
+        month: "long",
+        day: "numeric"
+    });
+    dateElement.textContent = formattedDate;
+}
+
+
