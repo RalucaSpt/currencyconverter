@@ -118,7 +118,7 @@ function convertCurrency() {
 
 function updateDate() {
     const today = new Date();
-    const formattedDate = today.toLocaleDateString("ro-RO", {
+    const formattedDate = today.toLocaleDateString("en-US", {
         year: "numeric",
         month: "long",
         day: "numeric"
