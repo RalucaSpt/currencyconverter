@@ -60,12 +60,23 @@ function populateCurrencyDropdowns() {
 }
 
 function fetchExchangeRates() {
+    const lastUpdate = localStorage.getItem('exchangeRatesTime');
+    const twelveHours = 12 * 60 * 60 * 1000;
+
+    if(lastUpdate && Date.now() - lastUpdate < twelveHours) {
+        console.log("Using cached exchange rates.");
+        useCachedRates();
+        return;
+    }
+
+    
     if(!navigator.onLine) {
         const warnMessage = `You are currently offline. Exchange rates may not be up to date. Using saved rates from ${new Date(parseInt(localStorage.getItem('exchangeRatesTime'))).toLocaleString()}`;
         warningElement.innerText = warnMessage;
         useCachedRates();
         return;
     }
+
 
     fetch('https://api.freecurrencyapi.com/v1/latest?apikey=fca_live_A8B5fHavBAZG6opxPJ85vozPY4fQj8nPQvZfdU9s')
         .then(response => response.json())
@@ -117,7 +128,7 @@ function convertCurrency() {
 
 
 function updateDate() {
-    const today = new Date();
+    const today =new Date(parseInt(localStorage.getItem('exchangeRatesTime')));
     const formattedDate = today.toLocaleDateString("en-US", {
         year: "numeric",
         month: "long",
