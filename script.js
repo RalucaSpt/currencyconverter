@@ -107,11 +107,27 @@ function useCachedRates() {
     }
 }
 
+function validateInput(amount) {
+    if (isNaN(amount) || amount <= 0 ) {
+        return false;
+    }
+    return true;
+}
+
 
 function convertCurrency() {
     const inputCurrency = inputCurrencyElement.value;
     const outputCurrency = outputCurrencyElement.value;
     const inputAmount = parseFloat(inputAmountElement.value);
+    const errorElement = document.getElementById('error');
+
+    errorElement.innerHTML='';
+
+    if (!validateInput(inputAmount)) {
+        errorElement.textContent = 'Please enter a valid amount greater than zero.';
+        outputAmountElement.value = ''; 
+        return;
+    }
 
     const inputRate = exchangeRates[inputCurrency];
     const outputRate = exchangeRates[outputCurrency];
