@@ -57,6 +57,17 @@ select, input {
     border-radius: 5px;
 }
 
+#input-element div{
+    display: flex;
+    flex-direction: column;
+}
+
+#error{
+    font-size:x-small;
+    padding: 0;
+    margin: 0;
+}
+
 .small-text {
     color: #888;
     font-size: 0.9em;
